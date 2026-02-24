@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/ceskasc/gozde/main/public/favicon.ico" alt="Gözde" width="80" height="80" />
+  <img src="public/favicon.ico" alt="Gözde" width="80" height="80" />
   
   <br/>
   <br/>
