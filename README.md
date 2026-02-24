@@ -1,62 +1,55 @@
-# 🎂 Gözde Birthday Experience
+<div align="center">
+  <img src="https://raw.githubusercontent.com/ceskasc/gozde/main/public/favicon.ico" alt="Gözde" width="80" height="80" />
+  
+  <br/>
+  <br/>
 
-Gözde Güngör için hazırlanmış premium doğum günü deneyimi.
+  <h1 align="center">İyi ki Doğdun Gözde 🎂</h1>
 
-## 🚀 Kurulum
+  <p align="center">
+    <strong>Bir web sitesinden çok daha fazlası; unutulmaz, dijital ve romantik bir doğum günü deneyimi.</strong>
+    <br/>
+    ✨ Gözde'nin 28. yaşı için özel olarak tasarlandı. ✨
+  </p>
 
-```bash
-npm install
-npm run dev
-```
+  <br/>
 
-Tarayıcıda `http://localhost:3000` açılır.
+  <p align="center">
+    <a href="https://ceskasc.github.io/gozde" target="_blank">
+      <img src="https://img.shields.io/badge/Canl%C4%B1_Yay%C4%B1na_Git-8ba4ff?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" />
+    </a>
+  </p>
+</div>
 
-## 📦 Build & Deploy (GitHub Pages)
+<br/>
+<hr/>
+<br/>
 
-```bash
-npm run build
-```
+## 🌌 Proje Hakkında
 
-`dist/` klasörünü GitHub Pages'a deploy edin:
+Bu proje, standart bir kutlama mesajının ötesine geçmek için sıfırdan inşa edilmiş, **ultra-premium** bir dijital sanat eseridir. Modern web teknolojileri (Vite + Vanilla JS) kullanılarak, performans kaybı yaşanmadan sinematik bir his yaratmak hedeflenmiştir. 
 
-1. GitHub repo → Settings → Pages  
-2. Source: `Deploy from a branch` → `main` → `/dist` (veya GitHub Actions)
-3. Alternatif: `dist/` içeriğini `gh-pages` branch'ine push edin.
+Derin okyanus mavileri, parlayan mor neonlar ve gece gökyüzünü yansıtan şık "Aurora" temasıyla Gözde için unutulmaz bir deneyim sunar.
 
-## 📁 Proje Yapısı
+<br/>
 
-```
-src/
-├── components/    # Navbar, MusicControl
-├── graphics/      # Aurora, Starfield, Metaballs, Confetti, Sparkle
-├── pages/         # 8 sayfa modülü
-├── styles/        # tokens.css, base.css, components.css, pages.css
-├── utils/         # Router, Storage, Motion, Canvas helpers
-└── main.js        # Entry point
-```
+## ✨ Öne Çıkan Özellikler
 
-## 🎨 Kişiselleştirme
+* **🌠 Sinematik Performanslar**: Sayfa geçişlerinde gözü yormayan "magnetic" butonlar, dalgalanma efekti (ripple) ve pürüzsüz kaydırmalar.
+* **💞 Uçuşan Kalpler & Yıldızlar**: Ekranda süzülen kalpler ve etkileşimli yıldız haritaları (Canvas 2D Particle Engine).
+* **💌 Etkileşimli Mektup**: Tıklandığında usulca açılan, içerisinden yukarıya doğru sevgi sözcükleri ve kalpler saçılan dijital mektup.
+* **🎁 Kupon Sistemi**: Cam gibi parlayan (Glassmorphism) kartlardan oluşan, özel bir anı seçmenizi bekleyen akıllı kupon sistemi (seçimler tarayıcıya kaydedilir).
+* **🎨 Generative Sanat Stüdyosu**: O güne özel, kodla üretilmiş 3 farklı premium soyut tablo (Neon Typographic, Astral Map, Ethereal Flow). Bu eserler yüksek kalitede PNG olarak indirilebilir.
+* **⚖️ Astro & Bilim Karmaşası**: Balık burcunun derin duygusal dünyasını hem yıldızların romantizmiyle hem de bilimsel(!) bir espriyle analiz eden interaktif kartlar.
 
-| Ne | Nerede |
-|---|---|
-| İsim / Metin | `src/pages/*.js` içindeki string'ler |
-| Doğum tarihi | `src/pages/sky.js` → `birthDate` |
-| Renkler | `src/styles/tokens.css` → CSS variables |
-| Kupon seçenekleri | `src/pages/coupon.js` → `COUPONS` array |
-| Mektup içeriği | `src/pages/letter.js` → HTML string |
-| Müzik playlist | `src/components/MusicControl.js` → `PLAYLIST_ID` |
+<br/>
 
-## 🎵 Müzik
+## 🤫 Gizli Bir Şeyler Var...
 
-YouTube IFrame API ile playlist çalar. Tarayıcı autoplay politikası nedeniyle sayfa açılınca sessiz başlar. Sağ alttaki mini-player'dan sesi açabilirsiniz.
+Siteyi gezerken etrafınıza iyi bakın. Bazı köşelerde parlayan minik bir yıldız dikkatinizi çekebilir. Doğru yere **5 kez tıklarsanız**, oyunun kuralları değişir ve sizi bambaşka, çok daha gizli ve derin bir sevgi mesajı karşılar. 
 
-## ✨ Özellikler
+<br/>
 
-- 8 sayfa + gizli sayfa (footer'daki yıldıza 5 kez tıkla)
-- Aurora, starfield, metaballs, confetti efektleri
-- Zarf açma animasyonu
-- 3 generative poster + PNG indirme
-- Hediye kuponu + localStorage
-- Noir / Aurora tema geçişi
-- `prefers-reduced-motion` desteği
-- Laptop üzerinde mobil uyumlu
+<div align="center">
+  <sub>Sonsuz sevgiyle kodlandı. 💜 C.</sub>
+</div>
