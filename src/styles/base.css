@@ -1,0 +1,231 @@
+/* ===== BASE STYLES ===== */
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--ff-body);
+    font-size: var(--fs-base);
+    font-weight: var(--fw-regular);
+    line-height: var(--lh-normal);
+    color: var(--c-text);
+    background-color: var(--c-bg);
+    overflow-x: hidden;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* — Selection — */
+::selection {
+    background: rgba(110, 140, 255, 0.3);
+    color: var(--c-text);
+}
+
+/* — Scrollbar — */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(110, 140, 255, 0.2);
+    border-radius: var(--r-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(110, 140, 255, 0.4);
+}
+
+/* — Focus — */
+:focus-visible {
+    outline: 2px solid var(--c-accent);
+    outline-offset: 3px;
+    border-radius: var(--r-sm);
+}
+
+/* — Headings — */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--ff-heading);
+    font-weight: var(--fw-semi);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-tight);
+    color: var(--c-text);
+}
+
+a {
+    color: var(--c-accent);
+    text-decoration: none;
+    transition: color var(--t-fast);
+}
+
+a:hover {
+    color: var(--c-accent-light);
+}
+
+img,
+video,
+canvas {
+    display: block;
+    max-width: 100%;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: inherit;
+}
+
+/* — Film Grain Overlay — */
+#grain-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-grain);
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    mix-blend-mode: overlay;
+}
+
+/* — Vignette Overlay — */
+#vignette-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: calc(var(--z-grain) - 1);
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+/* — App Container — */
+#app {
+    position: relative;
+    min-height: 100vh;
+}
+
+/* — Page wrapper — */
+.page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--s-20) var(--page-pad) var(--s-12);
+    max-width: var(--page-max);
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: pageEnter var(--t-smooth) forwards;
+}
+
+@keyframes pageEnter {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* — Page exit — */
+.page-exit {
+    animation: pageExit 300ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+@keyframes pageExit {
+    to {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+}
+
+/* — Section titles — */
+.section-label {
+    font-family: var(--ff-heading);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-medium);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-wider);
+    color: var(--c-accent);
+    margin-bottom: var(--s-4);
+}
+
+.section-title {
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-bold);
+    margin-bottom: var(--s-4);
+    background: var(--g-aurora);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-subtitle {
+    font-size: var(--fs-md);
+    color: var(--c-text-dim);
+    line-height: var(--lh-relaxed);
+    max-width: 540px;
+}
+
+/* — Utility — */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.text-gradient {
+    background: var(--g-aurora);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* — Reduced motion — */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .page {
+        opacity: 1;
+        transform: none;
+    }
+
+    #grain-overlay {
+        display: none;
+    }
+}

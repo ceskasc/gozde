@@ -1,0 +1,407 @@
+/* ===== COMPONENT STYLES ===== */
+
+/* — Navbar — */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-nav);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--s-4) var(--page-pad);
+    background: rgba(10, 14, 26, 0.6);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+    border-bottom: 1px solid var(--c-border);
+    transition: transform var(--t-base), background var(--t-base);
+}
+
+.navbar--hidden {
+    transform: translateY(-100%);
+}
+
+.navbar__brand {
+    font-family: var(--ff-heading);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semi);
+    color: var(--c-text);
+    letter-spacing: var(--ls-wide);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: var(--s-2);
+}
+
+.navbar__brand-icon {
+    width: 22px;
+    height: 22px;
+    filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.4));
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar__brand:hover .navbar__brand-icon {
+    transform: scale(1.1) rotate(15deg);
+}
+
+.navbar__brand-text {
+    background: linear-gradient(90deg, #fff, #e2e8f0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 0.1em;
+}
+
+.navbar__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--s-3);
+}
+
+.navbar__link {
+    font-size: var(--fs-xs);
+    color: var(--c-text-dim);
+    padding: var(--s-1) var(--s-3);
+    border-radius: var(--r-full);
+    transition: color var(--t-fast), background var(--t-fast);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-wide);
+    font-weight: var(--fw-medium);
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+    color: var(--c-text);
+    background: rgba(110, 140, 255, 0.1);
+}
+
+/* — Progress bar — */
+.progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: var(--g-aurora);
+    z-index: calc(var(--z-nav) + 1);
+    transition: width var(--t-smooth);
+    border-radius: 0 var(--r-full) var(--r-full) 0;
+    box-shadow: 0 0 12px rgba(110, 140, 255, 0.5);
+}
+
+/* — Button (Premium) — */
+.btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s-2);
+    padding: var(--s-3) var(--s-8);
+    font-family: var(--ff-heading);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semi);
+    letter-spacing: var(--ls-wide);
+    text-transform: uppercase;
+    border-radius: var(--r-full);
+    transition: transform var(--t-fast), box-shadow var(--t-base);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.btn--primary {
+    background: var(--g-aurora);
+    color: #fff;
+    box-shadow: var(--shadow-glow);
+}
+
+.btn--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 60px rgba(110, 140, 255, 0.3), var(--shadow-glow);
+}
+
+.btn--ghost {
+    background: transparent;
+    color: var(--c-text-dim);
+    border: 1px solid var(--c-border);
+}
+
+.btn--ghost:hover {
+    color: var(--c-text);
+    border-color: var(--c-border-hover);
+    background: rgba(110, 140, 255, 0.05);
+}
+
+/* Ripple */
+.btn .ripple {
+    position: absolute;
+    border-radius: var(--r-full);
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(0);
+    animation: ripple-anim 600ms ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes ripple-anim {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* — Card — */
+.card {
+    background: var(--c-bg-card);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-xl);
+    padding: var(--s-8);
+    transition: transform var(--t-base), border-color var(--t-base), box-shadow var(--t-base);
+    will-change: transform;
+}
+
+.card:hover {
+    border-color: var(--c-border-hover);
+    box-shadow: var(--shadow-glow);
+}
+
+/* — Toggle — */
+.toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-3);
+    cursor: pointer;
+    padding: var(--s-1) var(--s-2);
+}
+
+.toggle__track {
+    position: relative;
+    width: 48px;
+    height: 26px;
+    border-radius: var(--r-full);
+    background: rgba(110, 140, 255, 0.15);
+    border: 1px solid var(--c-border);
+    transition: background var(--t-fast);
+}
+
+.toggle__track--active {
+    background: var(--c-accent);
+    border-color: var(--c-accent);
+}
+
+.toggle__thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: var(--r-full);
+    background: #fff;
+    transition: transform var(--t-fast);
+    box-shadow: var(--shadow-sm);
+}
+
+.toggle__track--active .toggle__thumb {
+    transform: translateX(22px);
+}
+
+.toggle__label {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    color: var(--c-text-dim);
+    transition: color var(--t-fast);
+}
+
+.toggle__label--active {
+    color: var(--c-text);
+}
+
+/* — Modal — */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-modal);
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--t-base);
+    padding: var(--s-4);
+}
+
+.modal-backdrop--visible {
+    opacity: 1;
+}
+
+.modal {
+    background: var(--c-bg-card);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-2xl);
+    padding: var(--s-10);
+    max-width: 500px;
+    width: 100%;
+    transform: scale(0.95) translateY(10px);
+    transition: transform var(--t-smooth);
+    position: relative;
+}
+
+.modal-backdrop--visible .modal {
+    transform: scale(1) translateY(0);
+}
+
+.modal__close {
+    position: absolute;
+    top: var(--s-4);
+    right: var(--s-4);
+    width: 32px;
+    height: 32px;
+    border-radius: var(--r-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--c-text-dim);
+    transition: color var(--t-fast), background var(--t-fast);
+}
+
+.modal__close:hover {
+    color: var(--c-text);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* — Music Control — */
+.music-float {
+    position: fixed;
+    bottom: var(--s-6);
+    right: var(--s-6);
+    z-index: var(--z-music);
+    display: flex;
+    align-items: center;
+    gap: var(--s-2);
+    padding: var(--s-2) var(--s-4);
+    background: rgba(10, 14, 26, 0.8);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-full);
+    transition: opacity var(--t-base), transform var(--t-base);
+}
+
+.music-float__btn {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--r-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--c-text-dim);
+    transition: color var(--t-fast), background var(--t-fast);
+}
+
+.music-float__btn:hover {
+    color: var(--c-text);
+    background: rgba(110, 140, 255, 0.1);
+}
+
+.music-float__btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.music-float__indicator {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 14px;
+}
+
+.music-float__bar {
+    width: 2px;
+    background: var(--c-accent);
+    border-radius: var(--r-full);
+    animation: musicBar 1.2s ease-in-out infinite;
+}
+
+.music-float__bar:nth-child(1) {
+    height: 40%;
+    animation-delay: 0s;
+}
+
+.music-float__bar:nth-child(2) {
+    height: 70%;
+    animation-delay: 0.2s;
+}
+
+.music-float__bar:nth-child(3) {
+    height: 50%;
+    animation-delay: 0.4s;
+}
+
+.music-float__bar:nth-child(4) {
+    height: 80%;
+    animation-delay: 0.1s;
+}
+
+.music-float--paused .music-float__bar {
+    animation-play-state: paused;
+    height: 30% !important;
+}
+
+@keyframes musicBar {
+
+    0%,
+    100% {
+        height: 30%;
+    }
+
+    50% {
+        height: 100%;
+    }
+}
+
+/* — Theme Switch — */
+.theme-switch {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--r-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--c-text-dim);
+    transition: color var(--t-fast), background var(--t-fast), transform var(--t-fast);
+}
+
+.theme-switch:hover {
+    color: var(--c-text);
+    background: rgba(110, 140, 255, 0.1);
+    transform: rotate(30deg);
+}
+
+.theme-switch svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* — Secret Star — */
+.secret-star {
+    cursor: pointer;
+    opacity: 0.2;
+    transition: opacity var(--t-fast), transform var(--t-fast);
+    display: inline-flex;
+}
+
+.secret-star:hover {
+    opacity: 0.5;
+    transform: scale(1.2);
+}
+
+/* — Footer — */
+.page-footer {
+    margin-top: auto;
+    padding-top: var(--s-16);
+    text-align: center;
+    color: var(--c-text-muted);
+    font-size: var(--fs-xs);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s-3);
+}
